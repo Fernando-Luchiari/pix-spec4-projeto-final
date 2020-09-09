@@ -2,6 +2,7 @@ package br.com.mastertech.customer.mapper;
 
 import br.com.mastertech.customer.entity.Customer;
 import br.com.mastertech.customer.model.CustomerEditRequest;
+import br.com.mastertech.customer.model.CustomerLoginRequest;
 import br.com.mastertech.customer.model.CustomerRequest;
 import br.com.mastertech.customer.model.CustomerResponse;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,13 @@ public class CustomerMapper {
         customer.setEmail(request.getEmail());
         customer.setPassword(request.getPassword());
         customer.setPhoneNumber(request.getPhoneNumber());
+        return customer;
+    }
+
+    public Customer fromLogin (CustomerLoginRequest request) {
+        Customer customer = new Customer();
+        customer.setEmail(request.getEmail());
+        customer.setPassword(request.getPassword());
         return customer;
     }
 

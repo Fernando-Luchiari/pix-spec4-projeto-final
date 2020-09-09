@@ -48,4 +48,15 @@ public class CustomerService {
         } else
             throw new CustomerNotFoundException();
     }
+
+    public Customer logIn(Customer data){
+
+        Optional<Customer> opCustomer=   customerRepository.findByEmailAndPassword(data.getEmail(),data.getPassword());
+        if(opCustomer.isPresent()){
+            return opCustomer.get();
+        }else{
+            throw new CustomerNotFoundException();
+        }
+
+    }
 }

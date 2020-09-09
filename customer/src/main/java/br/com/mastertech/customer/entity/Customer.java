@@ -2,6 +2,9 @@ package br.com.mastertech.customer.entity;
 
 
 
+import org.springframework.lang.NonNullApi;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +16,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Nullable
     private String name;
     private String phoneNumber;
     private String email;
