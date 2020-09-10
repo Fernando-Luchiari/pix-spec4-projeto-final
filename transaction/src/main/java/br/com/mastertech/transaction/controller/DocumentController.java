@@ -47,9 +47,16 @@ public class DocumentController {
         return mapper.entityToResponseList(document);
     }
 
-    @PatchMapping(value = "/update/{txid}")
+    @PatchMapping(value = "/{txid}")
     public DocumentResponseCustomer updateDocument(@PathVariable String txid, @RequestBody DocumentUpdateRequest request) {
         Document document = service.updateDocument(txid, request);
         return mapper.entityToResponseList(document);
     }
+
+    @DeleteMapping(value = "/{txid}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteDocument(@PathVariable String txid) {
+        service.deleteDocument(txid);
+    }
+
 }

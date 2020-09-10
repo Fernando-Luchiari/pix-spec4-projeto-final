@@ -9,4 +9,6 @@ public interface TransactionRepository extends JpaRepository<Document, Long> {
     Document findByTxid(String txid);
 
     List<Document> findAllByCpfPagador(String cpf);
+
+    void deleteByTxid(String txid);
 }

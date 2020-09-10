@@ -7,6 +7,7 @@ import br.com.mastertech.transaction.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -31,5 +32,10 @@ public class TransactionService {
         Document byTxid = repository.findByTxid(txid);
         byTxid.setSolicitacaoPagador(request.getSolicitacaoPagador());
         return repository.save(byTxid);
+    }
+
+    @Transactional
+    public void deleteDocument(String txid) {
+        repository.deleteByTxid(txid);
     }
 }
