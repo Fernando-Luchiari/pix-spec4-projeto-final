@@ -56,7 +56,9 @@ pipeline {
                     when{branch "master"}
                     steps {
                         script{
-                            sh "./mvnw package -DskipTests"
+                            dir("customer"){
+                                sh "./mvnw package -DskipTests"
+                            }
                         }
                     }
                 }
