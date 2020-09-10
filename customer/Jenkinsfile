@@ -65,11 +65,13 @@ pipeline {
                 stage("Build and push image"){
                     steps{
                         script {
-                            docker.withRegistry("https://${params.REGISTRY_URL}","registry_credential"){
-                                def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}")
-                                /* Os dois 'push' abaixo fazem o push da imagem para o registry com a tag latest e a tag do numero do build da pipeline */
-                                customImage.push("${env.BUILD_ID}")
-                                customImage.push("latest")
+                            dir("customer"){
+                                docker.withRegistry("https://${params.REGISTRY_URL}","registry_credential"){
+                                    def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}")
+                                    /* Os dois 'push' abaixo fazem o push da imagem para o registry com a tag latest e a tag do numero do build da pipeline */
+                                    customImage.push("${env.BUILD_ID}")
+                                    customImage.push("latest")
+                                }
                             }
                         }
                     }
