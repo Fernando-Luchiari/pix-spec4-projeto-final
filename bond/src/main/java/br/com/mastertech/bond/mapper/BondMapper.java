@@ -13,11 +13,11 @@ public class BondMapper {
 
     public Bond from (BondRequest request) {
         Bond bond = new Bond();
-        bond.setKey(request.getKey());
+        bond.setKeyPix(request.getKeyPix());
         bond.setKeyType(request.getKeyType());
         bond.setAccount(request.getAccount());
         bond.setOwner(request.getOwner());
-        bond.setReasonsEnum(request.getReasonsEnum());
+        bond.setReasonsEnum(request.getReason());
         bond.setRequestId(request.getRequestId());
 
         return bond;
@@ -25,7 +25,7 @@ public class BondMapper {
 
     public BondResponsePost toPost (Bond bond) {
         BondResponsePost bondResponsePost = new BondResponsePost();
-        bondResponsePost.setKey(bond.getKey());
+        bondResponsePost.setKey(bond.getKeyPix());
         bondResponsePost.setKeyType(bond.getKeyType());
         bondResponsePost.setAccount(bond.getAccount());
         bondResponsePost.setOwner(bond.getOwner());
@@ -36,7 +36,7 @@ public class BondMapper {
 
     public BondResponseGet toGet (Bond bond) {
         BondResponseGet bondResponseGet = new BondResponseGet();
-        bondResponseGet.setKey(bond.getKey());
+        bondResponseGet.setKey(bond.getKeyPix());
         bondResponseGet.setKeyType(bond.getKeyType());
         bondResponseGet.setAccount(bond.getAccount());
         bondResponseGet.setOwner(bond.getOwner());

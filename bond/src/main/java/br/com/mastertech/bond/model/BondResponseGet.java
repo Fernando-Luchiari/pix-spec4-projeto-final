@@ -1,6 +1,5 @@
 package br.com.mastertech.bond.model;
 
-import br.com.mastertech.bond.enums.ReasonsEnum;
 import java.time.LocalDateTime;
 
 public class BondResponseGet {
@@ -10,7 +9,7 @@ public class BondResponseGet {
     private Account account;
 
     private Owner owner;
-    private ReasonsEnum reasonsEnum;
+    private String reason;
     private String requestId;
 
     private LocalDateTime creationDate;
@@ -49,12 +48,12 @@ public class BondResponseGet {
         this.owner = owner;
     }
 
-    public ReasonsEnum getReasonsEnum() {
-        return reasonsEnum;
+    public String getReason() {
+        return reason;
     }
 
-    public void setReasonsEnum(ReasonsEnum reasonsEnum) {
-        this.reasonsEnum = reasonsEnum;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public String getRequestId() {

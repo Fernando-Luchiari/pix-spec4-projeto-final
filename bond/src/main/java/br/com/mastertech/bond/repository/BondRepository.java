@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface BondRepository extends CrudRepository<Bond, Integer> {
-    Optional<Bond> findByKey(String key);
+    Optional<Bond> findByKeyPix(String key);
 }

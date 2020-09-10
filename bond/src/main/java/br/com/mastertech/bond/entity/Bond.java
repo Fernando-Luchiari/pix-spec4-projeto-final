@@ -4,10 +4,7 @@ import br.com.mastertech.bond.enums.ReasonsEnum;
 import br.com.mastertech.bond.model.Account;
 import br.com.mastertech.bond.model.Owner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,24 +14,35 @@ public class Bond {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String key;
+    private String keyPix;
     private String keyType;
+
+    @OneToOne(cascade = {CascadeType.ALL})
     private Account account;
 
+    @OneToOne(cascade = {CascadeType.ALL})
     private Owner owner;
-    private ReasonsEnum reasonsEnum;
+    private String reasonsEnum;
     private String requestId;
 
     private LocalDateTime creationDate;
     private LocalDateTime keyOwnershipDate;
     private LocalDateTime openClaimCreationDate;
 
-    public String getKey() {
-        return key;
+    public int getId() {
+        return id;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getKeyPix() {
+        return keyPix;
+    }
+
+    public void setKeyPix(String keyPix) {
+        this.keyPix = keyPix;
     }
 
     public String getKeyType() {
@@ -61,11 +69,11 @@ public class Bond {
         this.owner = owner;
     }
 
-    public ReasonsEnum getReasonsEnum() {
+    public String getReasonsEnum() {
         return reasonsEnum;
     }
 
-    public void setReasonsEnum(ReasonsEnum reasonsEnum) {
+    public void setReasonsEnum(String reasonsEnum) {
         this.reasonsEnum = reasonsEnum;
     }
 

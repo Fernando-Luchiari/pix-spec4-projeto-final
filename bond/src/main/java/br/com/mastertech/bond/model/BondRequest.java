@@ -1,23 +1,33 @@
 package br.com.mastertech.bond.model;
 
-import br.com.mastertech.bond.enums.ReasonsEnum;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BondRequest {
 
-    private String key;
+    @JsonProperty("key")
+    private String keyPix;
+
+    @JsonProperty("key_type")
     private String keyType;
+
+    @JsonProperty("account")
     private Account account;
 
+    @JsonProperty("owner")
     private Owner owner;
-    private ReasonsEnum reasonsEnum;
+
+    @JsonProperty("reason")
+    private String reason;
+
+    @JsonProperty("request_id")
     private String requestId;
 
-    public String getKey() {
-        return key;
+    public String getKeyPix() {
+        return keyPix;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setKeyPix(String keyPix) {
+        this.keyPix = keyPix;
     }
 
     public String getKeyType() {
@@ -44,12 +54,12 @@ public class BondRequest {
         this.owner = owner;
     }
 
-    public ReasonsEnum getReasonsEnum() {
-        return reasonsEnum;
+    public String getReason() {
+        return reason;
     }
 
-    public void setReasonsEnum(ReasonsEnum reasonsEnum) {
-        this.reasonsEnum = reasonsEnum;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public String getRequestId() {
