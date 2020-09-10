@@ -30,7 +30,7 @@ public class CustomerService {
             customer.setPassword(!data.getPassword().isEmpty() ? data.getPassword() : customer.getPassword());
             customer.setBranch(!data.getBranch().isEmpty() ? data.getBranch() : customer.getBranch());
             customer.setAccountnumber(!data.getAccountnumber().isEmpty() ? data.getAccountnumber() : customer.getAccountnumber());
-            customer.setAccountype(!data.getAccountype().isEmpty() ? data.getAccountype() : customer.getAccountype());
+            customer.setAccounttype(!data.getAccounttype().isEmpty() ? data.getAccounttype() : customer.getAccounttype());
 
             Customer save = customerRepository.save(customer);
             return save;

@@ -23,7 +23,7 @@ public class CustomerMapper {
         customer.setPhoneNumber(request.getPhoneNumber());
         customer.setBranch(request.getBranch());
         customer.setAccountnumber(request.getAccountnumber());
-        customer.setAccountype(request.getAccountype());
+        customer.setAccounttype(request.getAccounttype());
         customer.setOpeningdate(LocalDateTime.now());
 
         return customer;
@@ -38,7 +38,7 @@ public class CustomerMapper {
         customer.setPhoneNumber(request.getPhoneNumber());
         customer.setBranch(request.getBranch());
         customer.setAccountnumber(request.getAccountnumber());
-        customer.setAccountype(request.getAccountype());
+        customer.setAccounttype(request.getAccounttype());
 
         customer.setOpeningdate(LocalDateTime.now());
 
@@ -54,7 +54,7 @@ public class CustomerMapper {
         response.setPhoneNumber(customer.getPhoneNumber());
         response.setBranch(customer.getBranch());
         response.setAccountnumber(customer.getAccountnumber());
-        response.setAccountype(customer.getAccountype());
+        response.setAccounttype(customer.getAccounttype());
         response.setOpeningdate(LocalDateTime.now());
         return response;
     }

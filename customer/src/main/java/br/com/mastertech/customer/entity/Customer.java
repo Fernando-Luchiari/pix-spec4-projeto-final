@@ -22,7 +22,7 @@ public class Customer {
     private String password;
     private String branch;
     private String accountnumber;
-    private String accountype;
+    private String accounttype;
     private LocalDateTime openingdate;
 
     public Long getId() {
@@ -89,12 +89,12 @@ public class Customer {
         this.accountnumber = accountnumber;
     }
 
-    public String getAccountype() {
-        return accountype;
+    public String getAccounttype() {
+        return accounttype;
     }
 
-    public void setAccountype(String accountype) {
-        this.accountype = accountype;
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
     }
 
     public LocalDateTime getOpeningdate() {

@@ -32,7 +32,7 @@ public class CustomerRequest {
     private String accountnumber;
 
     @NotEmpty
-    private String accountype;
+    private String accounttype;
 
 
     public String getName() {
@@ -91,16 +91,11 @@ public class CustomerRequest {
         this.accountnumber = accountnumber;
     }
 
-    public String getAccountype() {
-        return accountype;
+    public String getAccounttype() {
+        return accounttype;
     }
 
-    public void setAccountype(String accountype) {
-        this.accountype = accountype;
-    }
-
-
-    public CustomerRequest(@NotNull(message = "Nome não pode ser em Branco") @NotBlank(message = "Nome não pode ser vazio") @Size(min = 3, message = "Nome mínimo com 3 caracteres") String name) {
-        this.name = name;
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
     }
 }
