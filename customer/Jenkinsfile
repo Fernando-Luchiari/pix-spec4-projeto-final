@@ -38,11 +38,11 @@ pipeline {
         gitLabConnection("gitlab")
     }
     stages {
-        stage("Test")
-        dir ('/costumer'){
+        stage("Test"){
             steps {
-                sh "cd costumer"
-                sh "costumer/ ./mvnw test"
+                dir("costumer"){
+                    sh "./mvnw test"
+                }
         }
     }
     stage("Build"){
@@ -53,7 +53,7 @@ pipeline {
             */
             stages{
                 stage("Package")
-                dir ('/customer'){
+                dir ("/customer") {
                     when{branch "master"}
                     steps {
                         script{
