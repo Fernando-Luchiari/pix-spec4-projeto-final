@@ -7,14 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bond" />
+        <module name="authserver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authserver" target="1.8" />
       <module name="bond" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="authserver" options="-parameters" />
       <module name="bond" options="-parameters" />
     </option>
   </component>

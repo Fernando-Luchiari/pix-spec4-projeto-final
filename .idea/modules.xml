@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/authserver/authserver.iml" filepath="$PROJECT_DIR$/authserver/authserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/bond/bond.iml" filepath="$PROJECT_DIR$/bond/bond.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pix-spec4-projeto-final.iml" filepath="$PROJECT_DIR$/.idea/pix-spec4-projeto-final.iml" />
     </modules>

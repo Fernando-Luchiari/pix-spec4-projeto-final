@@ -1,7 +1,10 @@
 package br.com.mastertech.bond.repository;
 
-import br.com.mastertech.bond.entity.BondEntity;
+import br.com.mastertech.bond.entity.Bond;
 import org.springframework.data.repository.CrudRepository;
 
-public interface BondRepository extends CrudRepository<BondEntity, Integer> {
+import java.util.Optional;
+
+public interface BondRepository extends CrudRepository<Bond, Integer> {
+    Optional<Bond> findByKey(String key);
 }
