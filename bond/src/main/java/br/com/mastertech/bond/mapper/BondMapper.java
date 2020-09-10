@@ -17,7 +17,7 @@ public class BondMapper {
         bond.setKeyType(request.getKeyType());
         bond.setAccount(request.getAccount());
         bond.setOwner(request.getOwner());
-        bond.setReasonsEnum(request.getReason());
+        bond.setReason(request.getReason());
         bond.setRequestId(request.getRequestId());
 
         return bond;

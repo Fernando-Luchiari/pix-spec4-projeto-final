@@ -1,6 +1,5 @@
 package br.com.mastertech.bond.entity;
 
-import br.com.mastertech.bond.enums.ReasonsEnum;
 import br.com.mastertech.bond.model.Account;
 import br.com.mastertech.bond.model.Owner;
 
@@ -22,7 +21,7 @@ public class Bond {
 
     @OneToOne(cascade = {CascadeType.ALL})
     private Owner owner;
-    private String reasonsEnum;
+    private String reason;
     private String requestId;
 
     private LocalDateTime creationDate;
@@ -69,12 +68,12 @@ public class Bond {
         this.owner = owner;
     }
 
-    public String getReasonsEnum() {
-        return reasonsEnum;
+    public String getReason() {
+        return reason;
     }
 
-    public void setReasonsEnum(String reasonsEnum) {
-        this.reasonsEnum = reasonsEnum;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public String getRequestId() {

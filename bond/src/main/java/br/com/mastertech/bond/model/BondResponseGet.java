@@ -9,8 +9,6 @@ public class BondResponseGet {
     private Account account;
 
     private Owner owner;
-    private String reason;
-    private String requestId;
 
     private LocalDateTime creationDate;
     private LocalDateTime keyOwnershipDate;
@@ -46,22 +44,6 @@ public class BondResponseGet {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
     }
 
     public LocalDateTime getCreationDate() {
