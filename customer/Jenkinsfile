@@ -15,15 +15,7 @@ pipeline {
             defaultValue: "registry-itau.mastertech.com.br/")
     string(
             name: "MYIMAGE",
-            defaultValue: "pix-grupo3-customer")
-    }
-    string(
-            name: "MYNAMESPACE",
-            defaultValue: "pix-grupo3-namespace")
-    }
-    string(
-            name: "MYDEPLOY",
-            defaultValue: "deployment-customer")
+            defaultValue: "alex-investimento")
     }
     post {
         always {
@@ -77,7 +69,7 @@ pipeline {
                       stages{
                         stage('Rollout Deployment'){
                           steps{
-                            sh "kubectl -n ${params.MYNAMESPACE} rollout restart deployment/${params.MYDEPLOY}"
+                            sh "kubectl -n alex-herrera-namespace rollout restart deployment/deployment-alex-herrera"
                             echo "Deployment realizado com sucesso!"
                           }
                       }
