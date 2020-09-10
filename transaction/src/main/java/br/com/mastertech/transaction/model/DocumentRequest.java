@@ -1,9 +1,13 @@
-package br.com.mastertech.transaction.entity;
+package br.com.mastertech.transaction.model;
 
-import java.time.LocalDateTime;
+import br.com.mastertech.transaction.entity.Calendario;
+import br.com.mastertech.transaction.entity.InfoAdicionais;
+import br.com.mastertech.transaction.entity.Pagador;
+import br.com.mastertech.transaction.entity.Valor;
+
 import java.util.List;
 
-public class Document {
+public class DocumentRequest {
 
     private Calendario dadosCalendario;
     private Pagador dadosPagador;
@@ -11,13 +15,6 @@ public class Document {
     private String chave;
     private String solicitacaoPagador;
     private List<InfoAdicionais> listaInfo;
-
-    private IdDocumento idDocumento;
-    private String payloadURL;
-    private String txid;
-    private LocalDateTime dataCriacao;
-
-
 
 
     public Calendario getDadosCalendario() {
