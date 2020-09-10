@@ -52,8 +52,7 @@ pipeline {
             quando o evento disparado pelo SCM for na branch master.
             */
             stages{
-                stage("Package")
-                dir ("/customer") {
+                stage("Package") {
                     when{branch "master"}
                     steps {
                         script{
