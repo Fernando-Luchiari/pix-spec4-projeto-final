@@ -5,8 +5,9 @@ import br.com.mastertech.transaction.model.DocumentResponse;
 
 public class TransactionMapper {
 
-    public DocumentResponse requestToResponse(DocumentRequest request){
-       DocumentResponse response = new DocumentResponse();
+    public DocumentResponse requestToResponse(DocumentRequest request) {
+        DocumentResponse response = new DocumentResponse();
 
+        return response;
     }
 }

@@ -1,47 +1,81 @@
 package br.com.mastertech.transaction.entity;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Entity
 public class Document {
 
-    private Calendario dadosCalendario;
-    private Pagador dadosPagador;
-    private Valor dadosValor;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private long id;
+
+    private LocalDate datavencimento;
+    private Boolean recebivelAposvencimento;
+    private String cpfPagador;
+    private String nomePagador;
+    private BigDecimal valor;
     private String chave;
     private String solicitacaoPagador;
-    private List<InfoAdicionais> listaInfo;
 
-    private IdDocumento idDocumento;
+    private String idUnicoDocumento;
+    @OneToMany
+    @JoinColumn(name="idDocument")
+    private List<InfoAdicionais> infoAdicionais;
+    private String revisao;
     private String payloadURL;
     private String txid;
     private LocalDateTime dataCriacao;
 
-
-
-
-    public Calendario getDadosCalendario() {
-        return dadosCalendario;
+    public long getId() {
+        return id;
     }
 
-    public void setDadosCalendario(Calendario dadosCalendario) {
-        this.dadosCalendario = dadosCalendario;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Pagador getDadosPagador() {
-        return dadosPagador;
+    public LocalDate getDatavencimento() {
+        return datavencimento;
     }
 
-    public void setDadosPagador(Pagador dadosPagador) {
-        this.dadosPagador = dadosPagador;
+    public void setDatavencimento(LocalDate datavencimento) {
+        this.datavencimento = datavencimento;
     }
 
-    public Valor getDadosValor() {
-        return dadosValor;
+    public Boolean getRecebivelAposvencimento() {
+        return recebivelAposvencimento;
     }
 
-    public void setDadosValor(Valor dadosValor) {
-        this.dadosValor = dadosValor;
+    public void setRecebivelAposvencimento(Boolean recebivelAposvencimento) {
+        this.recebivelAposvencimento = recebivelAposvencimento;
+    }
+
+    public String getCpfPagador() {
+        return cpfPagador;
+    }
+
+    public void setCpfPagador(String cpfPagador) {
+        this.cpfPagador = cpfPagador;
+    }
+
+    public String getNomePagador() {
+        return nomePagador;
+    }
+
+    public void setNomePagador(String nomePagador) {
+        this.nomePagador = nomePagador;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 
     public String getChave() {
@@ -60,11 +94,51 @@ public class Document {
         this.solicitacaoPagador = solicitacaoPagador;
     }
 
-    public List<InfoAdicionais> getListaInfo() {
-        return listaInfo;
+    public String getIdUnicoDocumento() {
+        return idUnicoDocumento;
     }
 
-    public void setListaInfo(List<InfoAdicionais> listaInfo) {
-        this.listaInfo = listaInfo;
+    public void setIdUnicoDocumento(String idUnicoDocumento) {
+        this.idUnicoDocumento = idUnicoDocumento;
+    }
+
+    public List<InfoAdicionais> getInfoAdicionais() {
+        return infoAdicionais;
+    }
+
+    public void setInfoAdicionais(List<InfoAdicionais> infoAdicionais) {
+        this.infoAdicionais = infoAdicionais;
+    }
+
+    public String getRevisao() {
+        return revisao;
+    }
+
+    public void setRevisao(String revisao) {
+        this.revisao = revisao;
+    }
+
+    public String getPayloadURL() {
+        return payloadURL;
+    }
+
+    public void setPayloadURL(String payloadURL) {
+        this.payloadURL = payloadURL;
+    }
+
+    public String getTxid() {
+        return txid;
+    }
+
+    public void setTxid(String txid) {
+        this.txid = txid;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 }
