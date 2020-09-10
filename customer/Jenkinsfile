@@ -40,6 +40,7 @@ pipeline {
     stages {
         stage("Test") {
             steps {
+                sh "cd costumer"
                 sh "costumer/ ./mvnw test"
         }
     }
@@ -54,7 +55,7 @@ pipeline {
                     when{branch "master"}
                     steps {
                         script{
-                            sh "costumer/ ./mvnw package -DskipTests"
+                            sh "./mvnw package -DskipTests"
                         }
                     }
                 }
