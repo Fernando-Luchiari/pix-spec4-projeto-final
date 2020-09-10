@@ -38,7 +38,8 @@ pipeline {
         gitLabConnection("gitlab")
     }
     stages {
-        stage("Test") {
+        stage("Test")
+        dir ('/costumer'){
             steps {
                 sh "cd costumer"
                 sh "costumer/ ./mvnw test"
@@ -51,7 +52,8 @@ pipeline {
             quando o evento disparado pelo SCM for na branch master.
             */
             stages{
-                stage("Package") {
+                stage("Package")
+                dir ('/customer'){
                     when{branch "master"}
                     steps {
                         script{
