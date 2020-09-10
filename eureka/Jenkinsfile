@@ -1,0 +1,93 @@
+pipeline {
+    agent any
+    parameters {
+      string(
+	        name: "vm_username",
+	        defaultValue: "ubuntu")
+      string(
+            name: "vm_host",
+            defaultValue: "3.134.252.92")
+      string(
+            name: "vm_path",
+            defaultValue: "/home/ubuntu")
+      string(
+            name: "REGISTRY_URL",
+            defaultValue: "registry-itau.mastertech.com.br/")
+    string(
+            name: "MYIMAGE",
+            defaultValue: "pix-grupo3-eureka")
+    string(
+            name: "MYNAMESPACE",
+            defaultValue: "pix-grupo3-namespace")
+    string(
+            name: "MYDEPLOY",
+            defaultValue: "deployment-eureka")
+    }
+    post {
+        always {
+            cleanWs()
+        }
+        failure {
+            updateGitlabCommitStatus name: "build", state: "failed"
+        }
+        success {
+            updateGitlabCommitStatus name: "build", state: "success"
+        }
+    }
+    options {
+        gitLabConnection("gitlab")
+    }
+    stages {
+        stage("Test"){
+            steps {
+                dir("customer"){
+                    sh "./mvnw test"
+                }
+        }
+    }
+    stage("Build"){
+        when{branch "master"}
+            /*
+            Todos os  blocos de stage (Package, Build and push image e Deploy serão executados apenas
+            quando o evento disparado pelo SCM for na branch master.
+            */
+            stages{
+                stage("Package") {
+                    when{branch "master"}
+                    steps {
+                        script{
+                            dir("customer"){
+                                sh "./mvnw package -DskipTests"
+                            }
+                        }
+                    }
+                }
+                stage("Build and push image"){
+                    steps{
+                        script {
+                            dir("customer"){
+                                docker.withRegistry("https://${params.REGISTRY_URL}","registry_credential"){
+                                    def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}:latest")
+                                    /* Os dois 'push' abaixo fazem o push da imagem para o registry com a tag latest e a tag do numero do build da pipeline */
+                                    customImage.push("${env.BUILD_ID}")
+                                    customImage.push("latest")
+                                }
+                            }
+                        }
+                    }
+                }
+                stage('Deploy'){
+                    when{branch 'master'}
+                      stages{
+                        stage('Rollout Deployment'){
+                          steps{
+                            sh "kubectl -n ${params.MYNAMESPACE} rollout restart deployment/${params.MYDEPLOY}"
+                            echo "Deployment realizado com sucesso!"
+                          }
+                      }
+                    }
+                }
+            }
+        }
+    }
+}
