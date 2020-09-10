@@ -10,7 +10,6 @@ public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
 
     private LocalDate datavencimento;
@@ -20,9 +19,8 @@ public class Document {
     private BigDecimal valor;
     private String chave;
     private String solicitacaoPagador;
-
     private String idUnicoDocumento;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="idDocument")
     private List<InfoAdicionais> infoAdicionais;
     private String revisao;

@@ -4,16 +4,22 @@ import br.com.mastertech.transaction.entity.Calendario;
 import br.com.mastertech.transaction.entity.InfoAdicionais;
 import br.com.mastertech.transaction.entity.Pagador;
 import br.com.mastertech.transaction.entity.Valor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.List;
 
 public class DocumentRequest {
 
+    @JsonProperty(value = "calendario")
     private Calendario dadosCalendario;
+    @JsonProperty(value = "pagador")
     private Pagador dadosPagador;
+    @JsonProperty(value = "valor")
     private Valor dadosValor;
     private String chave;
     private String solicitacaoPagador;
+    @JsonProperty(value = "infoAdicionais")
     private List<InfoAdicionais> listaInfo;
 
 

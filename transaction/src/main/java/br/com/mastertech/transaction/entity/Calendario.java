@@ -3,22 +3,22 @@ package br.com.mastertech.transaction.entity;
 import java.time.LocalDate;
 
 public class Calendario {
-    private LocalDate datavencimento;
-    private Boolean recebivelAposvencimento;
+    private LocalDate dataVencimento;
+    private Boolean recebivelAposVencimento;
 
-    public LocalDate getDatavencimento() {
-        return datavencimento;
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
     }
 
-    public void setDatavencimento(LocalDate datavencimento) {
-        this.datavencimento = datavencimento;
+    public void setDataVencimento(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
     }
 
-    public Boolean getRecebivelAposvencimento() {
-        return recebivelAposvencimento;
+    public Boolean getRecebivelAposVencimento() {
+        return recebivelAposVencimento;
     }
 
-    public void setRecebivelAposvencimento(Boolean recebivelAposvencimento) {
-        this.recebivelAposvencimento = recebivelAposvencimento;
+    public void setRecebivelAposVencimento(Boolean recebivelAposVencimento) {
+        this.recebivelAposVencimento = recebivelAposVencimento;
     }
 }

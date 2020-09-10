@@ -1,23 +1,39 @@
 package br.com.mastertech.transaction.model;
 
-import br.com.mastertech.transaction.entity.IdDocumento;
-
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class DocumentResponse {
 
-    private IdDocumento idDocumento;
+    private String idDocumento;
+    private String revisao;
     private String payloadURL;
     private String txid;
     private LocalDateTime dataCriacao;
+    private BigDecimal valor;
 
+    public String getRevisao() {
+        return revisao;
+    }
 
-    public IdDocumento getIdDocumento() {
+    public void setRevisao(String revisao) {
+        this.revisao = revisao;
+    }
+
+    public String getIdDocumento() {
         return idDocumento;
     }
 
-    public void setIdDocumento(IdDocumento idDocumento) {
+    public void setIdDocumento(String idDocumento) {
         this.idDocumento = idDocumento;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 
     public String getPayloadURL() {
