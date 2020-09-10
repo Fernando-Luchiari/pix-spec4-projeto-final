@@ -67,7 +67,7 @@ pipeline {
                         script {
                             dir("customer"){
                                 docker.withRegistry("https://${params.REGISTRY_URL}","registry_credential"){
-                                    def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}")
+                                    def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}:latest")
                                     /* Os dois 'push' abaixo fazem o push da imagem para o registry com a tag latest e a tag do numero do build da pipeline */
                                     customImage.push("${env.BUILD_ID}")
                                     customImage.push("latest")
