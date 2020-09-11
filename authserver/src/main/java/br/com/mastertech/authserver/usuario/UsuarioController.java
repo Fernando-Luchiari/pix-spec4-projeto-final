@@ -1,10 +1,12 @@
-package com.poc.authserver.usuario;
+package br.com.mastertech.authserver.usuario;
 
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import br.com.mastertech.authserver.entity.Customer;
+import br.com.mastertech.authserver.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UsuarioController {
 
   @Autowired
-  private UsuarioRepository usuarioRepository;
+  private CustomerRepository usuarioRepository;
 
   @GetMapping("/me")
   public Map<String, Object> validar(Principal principal) {
-    Optional<Usuario> optional = usuarioRepository.findByNome(principal.getName());
+    Optional<Customer> optional = usuarioRepository.findByEmail(principal.getName());
 
     Map<String, Object> map = new HashMap<>();
     map.put("name", principal.getName());

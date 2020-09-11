@@ -1,4 +1,4 @@
-package com.poc.authserver.config;
+package br.com.mastertech.authserver.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

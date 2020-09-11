@@ -1,4 +1,4 @@
-package com.poc.authserver.config;
+package br.com.mastertech.authserver.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.poc.authserver.usuario.UsuarioService;
+import br.com.mastertech.authserver.usuario.UsuarioService;
 
 @Configuration
 @EnableWebSecurity

@@ -1,4 +1,4 @@
-package com.poc.authserver;
+package br.com.mastertech.authserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
