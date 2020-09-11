@@ -6,9 +6,9 @@ public class BondResponsePost {
 
     private String key;
     private String keyType;
-    private Account account;
+    private AccountResponse account;
 
-    private Owner owner;
+    private OwnerResponse owner;
 
     private LocalDateTime creationDate;
     private LocalDateTime keyOwnershipDate;
@@ -29,19 +29,19 @@ public class BondResponsePost {
         this.keyType = keyType;
     }
 
-    public Account getAccount() {
+    public AccountResponse getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(AccountResponse account) {
         this.account = account;
     }
 
-    public Owner getOwner() {
+    public OwnerResponse getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
+    public void setOwner(OwnerResponse owner) {
         this.owner = owner;
     }
 
