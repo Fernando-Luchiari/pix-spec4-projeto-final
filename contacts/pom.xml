@@ -11,7 +11,7 @@
 	<groupId>br.com.mastertech</groupId>
 	<artifactId>contacts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>customer</name>
+	<name>contact</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
