@@ -36,8 +36,6 @@ public class UsuarioService implements UserDetailsService {
     }
 
     Customer usuario = optional.get();
-    usuario.setPassword(encoder.encode(usuario.getPassword()));
-    repository.save(usuario);
 
     
     SimpleGrantedAuthority authority = new SimpleGrantedAuthority("user");
