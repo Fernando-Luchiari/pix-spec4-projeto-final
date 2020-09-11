@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deployment-zuul
+    labels:
+        app: myapp-pix-grupo3-zuul
+spec:
+    template:
+        metadata:
+            name: myapp-pix-grupo3-zuul
+            labels:
+                app: myapp-pix-grupo3-zuul
+        spec:
+            containers:
+                - name: pix-grupo3-zuul-container
+                  image: registry-itau.mastertech.com.br/pix-grupo3-zuul
+            imagePullSecrets:
+                - name: regcred
+    replicas: 1
+    selector:
+        matchLabels:
+            app: myapp-pix-grupo3-zuul

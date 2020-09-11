@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: myapp-pix-grupo3-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /myapp-pix-grupo3(/|$)(.*)
+        backend:
+           serviceName: myapp-pix-grupo3-zuul
+           servicePort: 7000
+      - path: /myapp-pix-grupo3/auth(/|$)(.*)
+        backend:
+           serviceName: myapp-pix-grupo3-authserver
+           servicePort: 25565
+ 
