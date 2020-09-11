@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4ddccadf-50a9-4725-854f-da0ac356ae4c",
+		"_postman_id": "0a9ce997-34fb-45ff-92ff-6234e30748a7",
 		"name": "Pix - Spec4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -221,6 +221,121 @@
 							"port": "25565",
 							"path": [
 								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Bond",
+			"item": [
+				{
+					"name": "Salvar Bond",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"5518991463738\",\n    \"key_type\": \"PHONE\",\n    \"account\": {\n        \"participant\": \"312\",\n        \"branch\": \"8778\",\n        \"account_number\": \"878978\",\n        \"account_type\": \"SLRY\",\n        \"opening_date\": \"2020-09-10T03:00:00Z\"\n    },\n    \"owner\": {\n        \"type\": \"NATURAL_PERSON\",\n        \"tax_id_number\": \"876578578\",\n        \"name\": \"Luis de Lara teste\" \n    },\n    \"reason\": \"USER_REQUESTED\",\n    \"request_id\": \"a246d533-7f22-42a5-2a9b-e22ma55c0f4d\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8083/entries",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"entries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Bond",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8083/entries/5518991463738",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"entries",
+								"5518991463738"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Bond",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"5518991463738\",    \n    \"account\": {\n        \"participant\": \"312\",\n        \"branch\": \"8778\",\n        \"account_number\": \"878978\",\n        \"account_type\": \"SLRY\",\n        \"opening_date\": \"2020-09-10T03:00:00Z\"\n    },\n    \"owner\": {\n        \"type\": \"NATURAL_PERSON\",\n        \"tax_id_number\": \"876578578\",\n        \"name\": \"Luis de Lara\"\n    },\n    \"reason\": \"USER_REQUESTED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/entries/5518991463738",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"entries",
+								"5518991463738"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Bond",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"5518991463738\",    \n    \"participant\": \"312\",\n    \"reason\": \"ACCOUNT_CLOSURE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/entries/5518991463738",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"entries",
+								"5518991463738"
 							]
 						}
 					},
