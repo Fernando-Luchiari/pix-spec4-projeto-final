@@ -17,11 +17,9 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
     private BCryptPasswordEncoder encoder;
 
-    public CustomerService(){
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    }
 
     public Customer create(Customer data){
         data.setPassword(encoder.encode(data.getPassword()));
