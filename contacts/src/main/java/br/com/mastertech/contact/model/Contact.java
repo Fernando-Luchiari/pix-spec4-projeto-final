@@ -56,6 +56,8 @@ public class Contact
 
         this.nickName = nickName;
     }
+
+    //chave key
     public String getKey() {
 
         return key;
