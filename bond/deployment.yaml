@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bondpix-deployment
+  name: deployment-bond
   labels:
-    app: bondpix
+    app: myapp-pix-grupo3-bond
 spec:
   template:
     metadata:
-      name: bondpix-pod
+      name: bond-pix-grupo3
       labels:
-        app: bondpix
+        app: myapp-pix-grupo3-bond
     spec:
       containers:
-        - name: bondpix-container
-          image: registry-itau.mastertech.com.br/bondpiximage
+        - name: myapp-pix-grupo3-bond-container
+          image: registry-itau.mastertech.com.br/pix-grupo3-bond
       imagePullSecrets:
         - name: regcred
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: bondpix
+      app: myapp-pix-grupo3-bond
 

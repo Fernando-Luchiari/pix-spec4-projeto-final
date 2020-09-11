@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/entries")
 public class BondController {
 
