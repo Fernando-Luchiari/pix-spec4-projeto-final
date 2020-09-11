@@ -49,7 +49,7 @@ public class BondController {
 
     @DeleteMapping("/{key}/delete")
     @Transactional
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public BondResponseDelete deleteBond(@RequestBody @Valid BondRequestDelete bondRequestDelete, @PathVariable String key){
 
         bondService.deleteBond(mapper.toBond(bondRequestDelete));
