@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4617182b-9013-431b-9062-59b85bbd7665",
+		"_postman_id": "4ddccadf-50a9-4725-854f-da0ac356ae4c",
 		"name": "Pix - Spec4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -99,6 +99,40 @@
 							"path": [
 								"customer",
 								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"froidett2@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"login"
 							]
 						}
 					},

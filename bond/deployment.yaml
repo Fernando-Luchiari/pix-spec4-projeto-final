@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bondpix-deployment
+  labels:
+    app: bondpix
+spec:
+  template:
+    metadata:
+      name: bondpix-pod
+      labels:
+        app: bondpix
+    spec:
+      containers:
+        - name: bondpix-container
+          image: registry-itau.mastertech.com.br/bondpiximage
+      imagePullSecrets:
+        - name: regcred
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bondpix
+
