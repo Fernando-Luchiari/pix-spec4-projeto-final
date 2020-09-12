@@ -346,7 +346,144 @@
 		},
 		{
 			"name": "contact",
-			"item": [],
+			"item": [
+				{
+					"name": "get contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/contact/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contact",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"idCustomer\": 1,\r\n    \"nickName\": \"Fernando Luch\",\r\n    \"keyPix\": \"+551191293092\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contacts by idCostumer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/contacts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contacts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"id\": 2,\r\n    \"nickName\": \"Fernando Luchiari Duarte da Silva\",\r\n    \"keyPix\": \"+5511916139201\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"protocolProfileBehavior": {}
 		}
 	],
