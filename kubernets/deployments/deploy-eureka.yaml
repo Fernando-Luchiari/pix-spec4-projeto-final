@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deployment-eureka
+    labels:
+        app: myapp-pix-grupo3-eureka
+spec:
+    template:
+        metadata:
+            name: eureka-pix-grupo3
+            labels:
+                app: myapp-pix-grupo3-eureka
+        spec:
+            containers:
+                - name: pix-grupo3-eureka-container
+                  image: registry-itau.mastertech.com.br/pix-grupo3-eureka
+            imagePullSecrets:
+                - name: regcred
+    replicas: 1 
+    selector:
+        matchLabels:
+            app: myapp-pix-grupo3-eureka

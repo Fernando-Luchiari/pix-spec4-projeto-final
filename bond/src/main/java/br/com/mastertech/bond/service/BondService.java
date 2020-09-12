@@ -64,9 +64,14 @@ public class BondService {
         return s.toString();
     }
 
-//    public void updateBond(Bond bond) {
-//    }
+    public Bond updateBond(Bond bond) {
+        Bond retornoBond = new Bond();
 
-//    public void deleteBond() {
-//    }
+        bondRepository.save(bond);
+        return retornoBond;
+    }
+
+    public void deleteBond(Bond bond) {
+        bondRepository.delete(bond);
+    }
 }
