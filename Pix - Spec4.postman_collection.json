@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0a9ce997-34fb-45ff-92ff-6234e30748a7",
+		"_postman_id": "5f71530c-8681-4114-8bda-af508a9d918d",
 		"name": "Pix - Spec4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Vinicius\",\n    \"email\": \"vini@gmail.com\",\n    \"cpf\": \"12345678911\",\n    \"password\": \"1234\",\n    \"phoneNumber\": \"988764356\"\n}",
+							"raw": "{\n    \"name\": \"Luchiari\",\n    \"email\": \"luchi@gmail.com\",\n    \"cpf\": \"12345678911\",\n    \"password\": \"1234\",\n    \"phoneNumber\": \"988764356\",\n    \"branch\":\"0184\",\n    \"accountnumber\":\"062365\",\n    \"accounttype\":\"CC\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"12345678911\",\n    \"name\": \"Vinicius\",\n    \"email\": \"\",\n    \"password\": \"123456\",\n    \"phoneNumber\": \"3213141\"\n}",
+							"raw": "{\n    \"cpf\": \"12345678911\",\n    \"name\": \"Vinicius\",\n    \"email\": \"\",\n    \"password\": \"123456\",\n    \"phoneNumber\": \"3213141\",\n    \"branch\":\"0184\",\n    \"accountnumber\":\"062365\",\n    \"accounttype\":\"CC\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -342,6 +342,11 @@
 					"response": []
 				}
 			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "contact",
+			"item": [],
 			"protocolProfileBehavior": {}
 		}
 	],
