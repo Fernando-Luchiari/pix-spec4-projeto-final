@@ -10,14 +10,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceConfig extends ResourceServerConfigurerAdapter{
 
-  private static final String[] PUBLIC_ENDPOINTS_POST = {
-          "/customer"
-  };
-
+  
   @Override
   public void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().antMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS_POST)
-            .permitAll()
+    http.authorizeRequests()
             .anyRequest()
             .authenticated();
   }
