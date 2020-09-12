@@ -15,17 +15,18 @@ public class Contact
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message =  "Codigo do contato não  pode ser nulo")
-    @NotBlank(message = "Codigo do contato não pode ser vazio")
+    //@NotNull(message =  "Codigo do contato não  pode ser nulo")
+   // @NotBlank(message = "Codigo do contato não pode ser vazio")
     private Long idCustomer;
 
-    @NotNull(message =  "Nome do contato não  pode ser nulo")
-    @NotBlank(message = "Nome do contato não pode ser vazio")
+    //@NotNull(message =  "Nome do contato não  pode ser nulo")
+    //@NotBlank(message = "Nome do contato não pode ser vazio")
     private String nickName;
 
-    @NotNull(message =  "Chave de acesso não  pode ser nulo")
-    @NotBlank(message = "Chave de Acesso do contato não pode ser vazio")
-    private String key;
+
+    //@NotNull(message =  "Chave de acesso não  pode ser nulo")
+    //@NotBlank(message = "Chave de Acesso do contato não pode ser vazio")
+    private String keyPix;
 
     public Long getId() {
 
@@ -57,17 +58,12 @@ public class Contact
         this.nickName = nickName;
     }
 
-    //chave key
-    public String getKey() {
-
-        return key;
+    public String getKeyPix() {
+        return keyPix;
     }
 
-    public void setKey(String key) {
-
-        this.key = key;
+    public void setKeyPix(String keyPix) {
+        this.keyPix = keyPix;
     }
 
-    public Contact() {
-    }
 }
