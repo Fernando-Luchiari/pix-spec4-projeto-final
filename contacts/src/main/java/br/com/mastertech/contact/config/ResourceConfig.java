@@ -1,4 +1,4 @@
-package br.com.mastertech.customer.config;
+package br.com.mastertech.contact.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,7 +10,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceConfig extends ResourceServerConfigurerAdapter{
 
-  
+  private static final String[] PUBLIC_ENDPOINTS_POST = {
+          "/customer"
+  };
+
   @Override
   public void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
