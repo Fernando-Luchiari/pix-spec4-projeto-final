@@ -50,6 +50,14 @@ public class BondService {
         }
     }
 
+    public boolean verifyBond(String key) {
+        Optional<Bond> bondOptional = bondRepository.findByKeyPix(key);
+        if(bondOptional.isPresent())
+            return true;
+        else
+            return false;
+    }
+
     public static byte[] gerarHash(String frase, String algoritmo) {
         try {
             MessageDigest md = MessageDigest.getInstance(algoritmo);

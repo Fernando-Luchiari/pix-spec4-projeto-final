@@ -35,7 +35,11 @@ public class BondController {
     public BondResponseGet getBond(@PathVariable String key) {
         Bond bond = bondService.getBond(key);
         return mapper.toGet(bond);
+    }
 
+    @GetMapping("/verify/{key}")
+    public boolean verifyBond(@PathVariable String key){
+        return bondService.verifyBond(key);
     }
 
     @PutMapping("/{key}")
