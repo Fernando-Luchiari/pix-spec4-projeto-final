@@ -59,4 +59,12 @@ public class DocumentController {
         service.deleteDocument(txid);
     }
 
+    @GetMapping(value = "/chave/{chave}")
+    public List<DocumentResponseCustomer> getChave(@PathVariable String chave) {
+        List<Document> listDoc = service.getChave(chave);
+        return listDoc.stream()
+                .map(document -> mapper.entityToResponseList(document))
+                .collect(Collectors.toList());
+    }
+
 }
