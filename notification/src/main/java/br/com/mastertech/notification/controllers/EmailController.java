@@ -10,6 +10,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,16 +23,18 @@ public class EmailController {
     @Value("${twillio.auth.token}")
     private String authToken;
 
+    @Value("${twillio.phone.number}")
+    private static String senderNumber;
 
     @Autowired
     private JavaMailSender mailSender;
 
-    @GetMapping("/email")
-    public String sendMail(Customer customer) {
+    @GetMapping("/email/{email}")
+    public String sendMail(@RequestParam("email") String email) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText("Hello from Spring Boot Application");
-        message.setTo("yugo7@protonmail.com");
-        message.setFrom("PIX Grupo 3");
+        message.setTo(email);
+        message.setFrom("PIX_Grupo_3");
 
         try {
             mailSender.send(message);
@@ -42,14 +45,14 @@ public class EmailController {
         }
     }
 
-    @GetMapping("/sms")
-    public String sendSMS() {
+    @GetMapping("/sms/{number}")
+    public String sendSMS(@RequestParam("number") String number) {
         Twilio.init(sid, authToken);
 
         Message message = Message
-                .creator(new PhoneNumber("+5511983567627"), // to
-                        new PhoneNumber("+17542039152"), // from
-                        "Where's Wallace?")
+                .creator(new PhoneNumber("+55" + number), // to
+                        new PhoneNumber(senderNumber), // from
+                        "Teste")
                 .create();
 
         return message.getSid();
