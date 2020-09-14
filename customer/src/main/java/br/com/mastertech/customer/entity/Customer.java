@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Customer {
@@ -22,6 +24,10 @@ public class Customer {
     private String email;
     private String cpf;
     private String password;
+    private String branch;
+    private String accountnumber;
+    private String accounttype;
+    private LocalDateTime openingdate;
 
     public Long getId() {
         return id;
@@ -69,5 +75,37 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getAccountnumber() {
+        return accountnumber;
+    }
+
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
+    }
+
+    public String getAccounttype() {
+        return accounttype;
+    }
+
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
+    }
+
+    public LocalDateTime getOpeningdate() {
+        return openingdate;
+    }
+
+    public void setOpeningdate(LocalDateTime openingdate) {
+        this.openingdate = openingdate;
     }
 }

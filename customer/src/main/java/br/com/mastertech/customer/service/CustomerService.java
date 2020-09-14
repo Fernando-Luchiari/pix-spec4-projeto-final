@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,10 @@ public class CustomerService {
             customer.setPhoneNumber(!data.getPhoneNumber().isEmpty() ? data.getPhoneNumber() : customer.getPhoneNumber());
             customer.setEmail(!data.getEmail().isEmpty() ? data.getEmail() : customer.getEmail());
             customer.setPassword(!data.getPassword().isEmpty() ? data.getPassword() : customer.getPassword());
+            customer.setBranch(!data.getBranch().isEmpty() ? data.getBranch() : customer.getBranch());
+            customer.setAccountnumber(!data.getAccountnumber().isEmpty() ? data.getAccountnumber() : customer.getAccountnumber());
+            customer.setAccounttype(!data.getAccounttype().isEmpty() ? data.getAccounttype() : customer.getAccounttype());
+
             Customer save = customerRepository.save(customer);
             return save;
         } else

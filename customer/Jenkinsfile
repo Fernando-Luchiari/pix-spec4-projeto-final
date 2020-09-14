@@ -16,11 +16,9 @@ pipeline {
     string(
             name: "MYIMAGE",
             defaultValue: "pix-grupo3-customer")
-    }
     string(
             name: "MYNAMESPACE",
             defaultValue: "pix-grupo3-namespace")
-    }
     string(
             name: "MYDEPLOY",
             defaultValue: "deployment-customer")
@@ -40,9 +38,11 @@ pipeline {
         gitLabConnection("gitlab")
     }
     stages {
-        stage("Test") {
+        stage("Test"){
             steps {
-                sh "./mvnw test"
+                dir("customer"){
+                    sh "./mvnw test"
+                }
         }
     }
     stage("Build"){
@@ -56,18 +56,22 @@ pipeline {
                     when{branch "master"}
                     steps {
                         script{
-                            sh "./mvnw package -DskipTests"
+                            dir("customer"){
+                                sh "./mvnw package -DskipTests"
+                            }
                         }
                     }
                 }
                 stage("Build and push image"){
                     steps{
                         script {
-                            docker.withRegistry("https://${params.REGISTRY_URL}","registry_credential"){
-                                def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}")
-                                /* Os dois 'push' abaixo fazem o push da imagem para o registry com a tag latest e a tag do numero do build da pipeline */
-                                customImage.push("${env.BUILD_ID}")
-                                customImage.push("latest")
+                            dir("customer"){
+                                docker.withRegistry("https://${params.REGISTRY_URL}","registry_credential"){
+                                    def customImage=docker.build("${params.REGISTRY_URL}${params.MYIMAGE}:latest")
+                                    /* Os dois 'push' abaixo fazem o push da imagem para o registry com a tag latest e a tag do numero do build da pipeline */
+                                    customImage.push("${env.BUILD_ID}")
+                                    customImage.push("latest")
+                                }
                             }
                         }
                     }

@@ -1,5 +1,10 @@
 package br.com.mastertech.customer.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class CustomerResponse {
 
     private Long id;
@@ -7,6 +12,11 @@ public class CustomerResponse {
     private String phoneNumber;
     private String email;
     private String cpf;
+
+    private String branch;
+    private String accountnumber;
+    private String accounttype;
+    private LocalDateTime openingdate;
 
     public Long getId() {
         return id;
@@ -46,5 +56,37 @@ public class CustomerResponse {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getAccountnumber() {
+        return accountnumber;
+    }
+
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
+    }
+
+    public String getAccounttype() {
+        return accounttype;
+    }
+
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
+    }
+
+    public LocalDateTime getOpeningdate() {
+        return openingdate;
+    }
+
+    public void setOpeningdate(LocalDateTime openingdate) {
+        this.openingdate = openingdate;
     }
 }

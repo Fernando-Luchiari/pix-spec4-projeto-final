@@ -7,6 +7,9 @@ import br.com.mastertech.customer.model.CustomerRequest;
 import br.com.mastertech.customer.model.CustomerResponse;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Component
 public class CustomerMapper {
 
@@ -19,6 +22,10 @@ public class CustomerMapper {
         customer.setEmail(request.getEmail());
         customer.setPassword(request.getPassword());
         customer.setPhoneNumber(request.getPhoneNumber());
+        customer.setBranch(request.getBranch());
+        customer.setAccountnumber(request.getAccountnumber());
+        customer.setAccounttype(request.getAccounttype());
+        customer.setOpeningdate(LocalDateTime.now());
 
         return customer;
     }
@@ -30,6 +37,12 @@ public class CustomerMapper {
         customer.setEmail(request.getEmail());
         customer.setPassword(request.getPassword());
         customer.setPhoneNumber(request.getPhoneNumber());
+        customer.setBranch(request.getBranch());
+        customer.setAccountnumber(request.getAccountnumber());
+        customer.setAccounttype(request.getAccounttype());
+
+        customer.setOpeningdate(LocalDateTime.now());
+
         return customer;
     }
 
@@ -47,6 +60,10 @@ public class CustomerMapper {
         response.setCpf(customer.getCpf());
         response.setEmail(customer.getEmail());
         response.setPhoneNumber(customer.getPhoneNumber());
+        response.setBranch(customer.getBranch());
+        response.setAccountnumber(customer.getAccountnumber());
+        response.setAccounttype(customer.getAccounttype());
+        response.setOpeningdate(LocalDateTime.now());
         return response;
     }
 

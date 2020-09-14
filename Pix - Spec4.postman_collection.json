@@ -230,6 +230,94 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "localhost:25565/oauth/token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pix",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "projPixSpec4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "luchiari.fernando@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:25565/oauth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "25565",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:25565/me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "a671e4b8-26e5-4d60-a718-c3c4132436cd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:25565/me",
+							"host": [
+								"localhost"
+							],
+							"port": "25565",
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

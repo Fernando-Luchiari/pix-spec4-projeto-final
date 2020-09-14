@@ -1,6 +1,8 @@
 package br.com.mastertech.customer.model;
 
 
+import java.util.Date;
+
 public class CustomerEditRequest {
 
     private String cpf;
@@ -8,6 +10,10 @@ public class CustomerEditRequest {
     private String phoneNumber;
     private String email;
     private String password;
+
+    private String  branch;
+    private String accountnumber;
+    private String accounttype;
 
     public String getName() {
         return name;
@@ -47,5 +53,29 @@ public class CustomerEditRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getAccountnumber() {
+        return accountnumber;
+    }
+
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
+    }
+
+    public String getAccounttype() {
+        return accounttype;
+    }
+
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
     }
 }

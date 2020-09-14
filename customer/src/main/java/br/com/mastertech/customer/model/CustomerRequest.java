@@ -1,8 +1,9 @@
 package br.com.mastertech.customer.model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.validation.constraints.*;
+import java.util.Date;
 
 public class CustomerRequest {
 
@@ -10,10 +11,29 @@ public class CustomerRequest {
     @NotBlank(message = "Nome não pode ser vazio")
     @Size(min = 3, message = "Nome mínimo com 3 caracteres")
     private String name;
+
+    @NotEmpty(message = "Informe o número do telefone.")
+    @Size(min = 13, max = 13, message = "O telefone deve ter o formato 11 11111-1111.")
     private String phoneNumber;
+
+    @Email(message = "Informe o email")
     private String email;
+
+    @CPF(message = "Informe o CPF")
     private String cpf;
+
+    @NotEmpty(message = "Informe uma senha")
     private String password;
+
+    @NotNull
+    private String branch;
+
+    @NotNull
+    private String accountnumber;
+
+    @NotEmpty
+    private String accounttype;
+
 
     public String getName() {
         return name;
@@ -53,5 +73,29 @@ public class CustomerRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getAccountnumber() {
+        return accountnumber;
+    }
+
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
+    }
+
+    public String getAccounttype() {
+        return accounttype;
+    }
+
+    public void setAccounttype(String accounttype) {
+        this.accounttype = accounttype;
     }
 }
