@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4ddccadf-50a9-4725-854f-da0ac356ae4c",
+		"_postman_id": "4617182b-9013-431b-9062-59b85bbd7665",
 		"name": "Pix - Spec4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -108,16 +108,16 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "login",
+			"name": "transaction",
 			"item": [
 				{
-					"name": "login",
+					"name": "createTransaction",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"froidett2@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"raw": "{\n    \"calendario\": {\n        \"dataVencimento\": \"2020-12-31\",\n        \"recebivelAposVencimento\": true\n    },\n    \"pagador\": {\n        \"cpf\": \"12345678909\",\n        \"nome\": \"Francisco da Silva\"\n    },\n    \"valor\": {\n        \"original\": \"123.45\"\n    },\n    \"chave\": \"12345-123456789-654321\",\n    \"solicitacaoPagador\": \"Cobrança dos serviços prestados.\",\n    \"infoAdicionais\": [\n        {\n            \"nome\": \"Campo 1\",\n            \"valor\": \"Informação Adicional1 do PSP-Recebedor\"\n        },\n        {\n            \"nome\": \"Campo 2\",\n            \"valor\": \"Informação Adicional2 do PSP-Recebedor\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,14 +125,104 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/login",
+							"raw": "http://localhost:8083/document",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8083",
 							"path": [
-								"login"
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getListDocument",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/document/12345678909",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"document",
+								"12345678909"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDocument",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/document/txid/d2d9bfee-f20a-45eb-b3de-9952180fdd5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"document",
+								"txid",
+								"d2d9bfee-f20a-45eb-b3de-9952180fdd5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDocument",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"solicitacaoPagador\": \"arroz com batata\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/document/d2d9bfee-f20a-45eb-b3de-9952180fdd5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"document",
+								"d2d9bfee-f20a-45eb-b3de-9952180fdd5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDocument",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/document/d2d9bfee-f20a-45eb-b3de-9952180fdd5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"document",
+								"d2d9bfee-f20a-45eb-b3de-9952180fdd5b"
 							]
 						}
 					},
