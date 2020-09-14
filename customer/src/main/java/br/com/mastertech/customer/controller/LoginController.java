@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/login")
 public class LoginController {
 
@@ -22,6 +21,7 @@ public class LoginController {
     @Autowired
     private CustomerMapper mapper;
 
+    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     private CustomerResponse logIn(@RequestBody @Valid CustomerLoginRequest request){
