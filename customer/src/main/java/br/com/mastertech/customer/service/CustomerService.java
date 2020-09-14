@@ -53,6 +53,14 @@ public class CustomerService {
             throw new CustomerNotFoundException();
     }
 
+    public Customer getCustomerByCpf (String cpf) {
+        Optional<Customer> byCpf= customerRepository.findByCpf(cpf);
+        if (byCpf.isPresent()) {
+            return byCpf.get();
+        } else
+            throw new CustomerNotFoundException();
+    }
+
     public void deleteCustomer (Long id) {
         Optional<Customer> byId = customerRepository.findById(id);
         if (byId.isPresent()) {

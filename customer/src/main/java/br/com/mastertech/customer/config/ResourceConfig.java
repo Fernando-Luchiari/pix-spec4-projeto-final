@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class ResourceConfig extends ResourceServerConfigurerAdapter{
 
   private static final String[] PUBLIC_ENDPOINTS_POST = {
-          "/contact",
+          "/customer",
           "/login"
   };
 
