@@ -3,12 +3,12 @@ kind: Service
 metadata:
   labels:
     app: myapp-pix-grupo3-notification
-  name: myapp-pix-grupo3-notification 
+  name: myapp-pix-grupo3-notification
 spec:
   ports:
-  - port: 8087
-    targetPort: 8087
-    name: myapp-pix-grupo3-notification
+    - port: 8097
+      targetPort: 8097
+      name: myapp-pix-grupo3-notification
   selector:
     app: myapp-pix-grupo3-notification
   type: NodePort

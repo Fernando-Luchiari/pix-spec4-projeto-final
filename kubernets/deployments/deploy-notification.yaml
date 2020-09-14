@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: deployment-notification
-    labels:
-        app: myapp-pix-grupo3-notification
+  name: deployment-notification
+  labels:
+    app: myapp-pix-grupo3-notification
 spec:
-    template:
-        metadata:
-            name: customer-pix-grupo3
-            labels:
-                app: myapp-pix-grupo3-notification
-        spec:
-            containers:
-                - name: pix-grupo3-customer-container
-                  image: registry-itau.mastertech.com.br/pix-grupo3-notification
-            imagePullSecrets:
-                - name: regcred
-    replicas: 2
-    selector:
-        matchLabels:
-            app: myapp-pix-grupo3-notification
+  template:
+    metadata:
+      name: notification-pix-grupo3
+      labels:
+        app: myapp-pix-grupo3-notification
+    spec:
+      containers:
+        - name: myapp-pix-grupo3-notification-container
+          image: registry-itau.mastertech.com.br/pix-grupo3-notification
+      imagePullSecrets:
+        - name: regcred
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp-pix-grupo3-notification
