@@ -2,6 +2,7 @@ package br.com.mastertech.customer.service;
 
 import br.com.mastertech.customer.entity.Customer;
 import br.com.mastertech.customer.exception.CustomerNotFoundException;
+import br.com.mastertech.customer.exception.ExistingCPFException;
 import br.com.mastertech.customer.exception.UserOrPasswordWrongException;
 import br.com.mastertech.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,12 @@ public class CustomerService {
 
 
     public Customer create(Customer data){
-        data.setPassword(encoder.encode(data.getPassword()));
-        return customerRepository.save(data);
+        Optional<Customer> byCpf = customerRepository.findByCpf(data.getCpf());
+        if (!byCpf.isPresent()) {
+            data.setPassword(encoder.encode(data.getPassword()));
+            return customerRepository.save(data);
+        }
+        throw new ExistingCPFException();
     }
 
     public Customer editCustomer(Customer data) {
