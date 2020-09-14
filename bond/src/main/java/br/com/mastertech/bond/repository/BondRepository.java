@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface BondRepository extends CrudRepository<Bond, Integer> {
     Optional<Bond> findByKeyPix(String key);
+
+    Optional<Bond> findByKeyPixAndKeyType(String keyPix, String keyType);
 }

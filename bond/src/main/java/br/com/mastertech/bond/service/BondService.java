@@ -1,6 +1,7 @@
 package br.com.mastertech.bond.service;
 
 import br.com.mastertech.bond.entity.Bond;
+import br.com.mastertech.bond.exceptions.BondExceptionJaExiste;
 import br.com.mastertech.bond.exceptions.BondNotFoundException;
 import br.com.mastertech.bond.model.BondRequest;
 import br.com.mastertech.bond.model.BondResponseGet;
@@ -26,10 +27,16 @@ public class BondService {
     private BondRepository bondRepository;
 
     public Bond createBond(Bond bond) {
+
+        if(alreadyExistsKeyPixeKeyType(bond).isPresent()){
+            throw new BondExceptionJaExiste();
+        }
+
         bond.setCreationDate(LocalDateTime.now());
         bond.setKeyOwnershipDate(LocalDateTime.now());
         //bond.setRequestId(stringHexa(gerarHash(bond.getOwner().getName(), "MD5")));
         return bondRepository.save(bond);
+
     }
 
     public Bond getBond(String key) {
@@ -73,5 +80,9 @@ public class BondService {
 
     public void deleteBond(Bond bond) {
         bondRepository.delete(bond);
+    }
+
+    private Optional<Bond> alreadyExistsKeyPixeKeyType(Bond bond){
+        return bondRepository.findByKeyPixAndKeyType(bond.getKeyPix(), bond.getKeyType());
     }
 }
