@@ -5,22 +5,12 @@ import br.com.mastertech.notification.clients.CustomerClients.CustomerClient;
 import br.com.mastertech.notification.services.MailService;
 import br.com.mastertech.notification.services.SmsService;
 import br.com.mastertech.transaction.entity.Document;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
 
-import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
+import java.io.IOException;
 
 @Component
 public class TransactionEventConsumer {
