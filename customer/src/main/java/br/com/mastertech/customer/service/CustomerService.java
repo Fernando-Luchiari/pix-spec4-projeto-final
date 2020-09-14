@@ -2,6 +2,7 @@ package br.com.mastertech.customer.service;
 
 import br.com.mastertech.customer.entity.Customer;
 import br.com.mastertech.customer.exception.CustomerNotFoundException;
+import br.com.mastertech.customer.exception.UserOrPasswordWrongException;
 import br.com.mastertech.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -62,11 +63,15 @@ public class CustomerService {
 
     public Customer logIn(Customer data){
 
-        Optional<Customer> opCustomer=   customerRepository.findByEmailAndPassword(data.getEmail(),data.getPassword());
+        Optional<Customer> opCustomer=   customerRepository.findByEmail(data.getEmail());
         if(opCustomer.isPresent()){
-            return opCustomer.get();
+            if(encoder.matches(data.getPassword(), opCustomer.get().getPassword())){
+                return opCustomer.get();
+            }else{
+                throw new UserOrPasswordWrongException();
+            }
         }else{
-            throw new CustomerNotFoundException();
+            throw new UserOrPasswordWrongException();
         }
 
     }

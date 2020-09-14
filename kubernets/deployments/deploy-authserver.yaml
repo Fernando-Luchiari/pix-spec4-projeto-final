@@ -16,7 +16,7 @@ spec:
                   image: registry-itau.mastertech.com.br/pix-grupo3-authserver
             imagePullSecrets:
                 - name: regcred
-    replicas: 2
+    replicas: 1
     selector:
         matchLabels:
             app: myapp-pix-grupo3-authserver
