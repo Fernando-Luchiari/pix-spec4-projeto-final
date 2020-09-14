@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myapp-pix-grupo3-authserver
+  name: myapp-pix-grupo3-authserver 
+spec:
+  ports:
+  - port: 25565
+    targetPort: 25565
+    name: myapp-pix-grupo3-authserver
+  selector:
+    app: myapp-pix-grupo3-authserver
+  type: NodePort

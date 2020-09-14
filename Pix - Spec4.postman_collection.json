@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0a9ce997-34fb-45ff-92ff-6234e30748a7",
+		"_postman_id": "5f71530c-8681-4114-8bda-af508a9d918d",
 		"name": "Pix - Spec4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Vinicius\",\n    \"email\": \"vini@gmail.com\",\n    \"cpf\": \"12345678911\",\n    \"password\": \"1234\",\n    \"phoneNumber\": \"988764356\"\n}",
+							"raw": "{\n    \"name\": \"Luchiari\",\n    \"email\": \"luchi@gmail.com\",\n    \"cpf\": \"12345678911\",\n    \"password\": \"1234\",\n    \"phoneNumber\": \"988764356\",\n    \"branch\":\"0184\",\n    \"accountnumber\":\"062365\",\n    \"accounttype\":\"CC\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cpf\": \"12345678911\",\n    \"name\": \"Vinicius\",\n    \"email\": \"\",\n    \"password\": \"123456\",\n    \"phoneNumber\": \"3213141\"\n}",
+							"raw": "{\n    \"cpf\": \"12345678911\",\n    \"name\": \"Vinicius\",\n    \"email\": \"\",\n    \"password\": \"123456\",\n    \"phoneNumber\": \"3213141\",\n    \"branch\":\"0184\",\n    \"accountnumber\":\"062365\",\n    \"accounttype\":\"CC\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -336,6 +336,148 @@
 							"path": [
 								"entries",
 								"5518991463738"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "contact",
+			"item": [
+				{
+					"name": "get contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/contact/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contact",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"idCustomer\": 1,\r\n    \"nickName\": \"Fernando Luch\",\r\n    \"keyPix\": \"+551191293092\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contacts by idCostumer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/contacts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contacts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8cfdde19-63ee-442e-9657-4e9a36f0e4b0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"id\": 2,\r\n    \"nickName\": \"Fernando Luchiari Duarte da Silva\",\r\n    \"keyPix\": \"+5511916139201\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/contact",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"contact"
 							]
 						}
 					},
