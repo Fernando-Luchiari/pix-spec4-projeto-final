@@ -29,7 +29,12 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter{
      .withClient("projPixSpec4")
      .secret(encoder.encode("pix"))
      .authorizedGrantTypes("check_token", "password", "refresh_token")
-     .scopes("all");
+     .scopes("all")
+     .and()
+     .withClient("apiprojPixSpec4")
+      .secret(encoder.encode("apipix"))
+      .authorizedGrantTypes("check_token", "password", "refresh_token")
+      .scopes("all");
   }
   
   @Override
