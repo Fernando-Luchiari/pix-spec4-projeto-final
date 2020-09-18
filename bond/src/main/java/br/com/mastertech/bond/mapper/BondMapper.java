@@ -73,4 +73,39 @@ public class BondMapper {
     }
 
 
+    public Bond toBond(BondRequestPut bondRequestPut) {
+        Bond bond = new Bond();
+        bond.setKeyPix(bondRequestPut.getKeyPix());
+        bond.setAccount(bondRequestPut.getAccount());
+        bond.setReason(bondRequestPut.getReason());
+
+        return bond;
+    }
+
+    public BondResponsePut toBondResponsePut(Bond bond) {
+        BondResponsePut bondResponsePut = new BondResponsePut();
+
+        bondResponsePut.setKey(bond.getKeyPix());
+        bondResponsePut.setKeyType(bond.getKeyType());
+        bondResponsePut.setAccount(bond.getAccount());
+        bondResponsePut.setOwner(bond.getOwner());
+        bondResponsePut.setCreationDate(bond.getCreationDate());
+        bondResponsePut.setKeyOwnershipDate(bond.getKeyOwnershipDate());
+
+        return bondResponsePut;
+    }
+
+    public Bond toBond(BondRequestDelete bondRequestDelete) {
+        Bond bond = new Bond();
+        bond.setKeyPix(bondRequestDelete.getKeyPix());
+
+        return bond;
+    }
+
+    public BondResponseDelete toBondResponseDelete(BondRequestDelete bondRequestDelete) {
+        BondResponseDelete bondResponseDelete = new BondResponseDelete();
+        bondResponseDelete.setKeyPix(bondRequestDelete.getKeyPix());
+
+        return bondResponseDelete;
+    }
 }

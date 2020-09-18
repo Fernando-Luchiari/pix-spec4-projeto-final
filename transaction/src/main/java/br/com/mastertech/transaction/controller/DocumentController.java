@@ -1,11 +1,9 @@
 package br.com.mastertech.transaction.controller;
 
 import br.com.mastertech.transaction.entity.Document;
+import br.com.mastertech.transaction.exception.BondNotFoundException;
 import br.com.mastertech.transaction.mapper.TransactionMapper;
-import br.com.mastertech.transaction.model.DocumentRequest;
-import br.com.mastertech.transaction.model.DocumentResponse;
-import br.com.mastertech.transaction.model.DocumentResponseCustomer;
-import br.com.mastertech.transaction.model.DocumentUpdateRequest;
+import br.com.mastertech.transaction.model.*;
 import br.com.mastertech.transaction.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +22,19 @@ public class DocumentController {
     private TransactionMapper mapper;
     @Autowired
     private TransactionService service;
+    @Autowired
+    private BondClient bond;
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public DocumentResponse createDocument(@RequestBody @Valid DocumentRequest request){
-        Document document = service.create(mapper.requestToEntity(request));
-        return mapper.entityToResponse(document);
+        if (bond.verifyBond(request.getChave())) {
+            Document document = service.create(mapper.requestToEntity(request));
+            return mapper.entityToResponse(document);
+        } else {
+            throw new BondNotFoundException();
+        }
+
     }
 
     @GetMapping(value = "/{cpf}")
@@ -57,6 +62,14 @@ public class DocumentController {
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteDocument(@PathVariable String txid) {
         service.deleteDocument(txid);
+    }
+
+    @GetMapping(value = "/chave/{chave}")
+    public List<DocumentResponseCustomer> getChave(@PathVariable String chave) {
+        List<Document> listDoc = service.getChave(chave);
+        return listDoc.stream()
+                .map(document -> mapper.entityToResponseList(document))
+                .collect(Collectors.toList());
     }
 
 }

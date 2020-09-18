@@ -1,8 +1,6 @@
 package br.com.mastertech.customer.entity;
 
 
-
-import org.springframework.lang.NonNullApi;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
@@ -10,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class Customer {

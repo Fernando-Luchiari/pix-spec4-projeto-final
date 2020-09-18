@@ -2,12 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: bondpix
-  name: bondpix
+    app: myapp-pix-grupo3-bond
+  name: myapp-pix-grupo3-bond
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8091
+      targetPort: 8091
+      name: myapp-pix-grupo3-bond
   selector:
-    app: bondpix
+    app: myapp-pix-grupo3-bond
   type: NodePort

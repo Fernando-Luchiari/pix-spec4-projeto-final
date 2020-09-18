@@ -7,6 +7,7 @@ import br.com.mastertech.contact.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,20 @@ public class ContactService
             throw new ContactNotFoundException();
         }
     }
+
+    public Contact update(Contact contact){
+        Optional<Contact> contactOptional = contactRepository.findById(contact.getId());
+        if(contactOptional.isPresent())
+        {
+            Contact contactFound = contactOptional.get();
+            contactFound.setKeyPix(contact.getKeyPix());
+            contactFound.setNickName(contact.getNickName());
+            return contactRepository.save(contactFound);
+        }else{
+            throw new ContactNotFoundException();
+        }
+    }
+
     //*** Deletar
     public void deleteContact (Long id) {
         System.out.println(System.currentTimeMillis() + " - Deletar um contato " + id);
@@ -46,5 +61,20 @@ public class ContactService
             contactRepository.delete(byId.get());
         } else
             throw new ContactNotFoundException();
+    }
+
+    public List<Contact> getContatos(Long id)
+    {
+        System.out.println(System.currentTimeMillis() + " - Buscaram contatos " + id);
+        List<Contact> contacts = contactRepository.findByIdCustomer(id);
+
+        if(!contacts.isEmpty())
+        {
+          return  contacts;
+        }
+        else
+        {
+            throw new ContactNotFoundException();
+        }
     }
 }

@@ -13,25 +13,29 @@ public class CustomerRequest {
     private String name;
 
     @NotEmpty(message = "Informe o número do telefone.")
-    @Size(min = 13, max = 13, message = "O telefone deve ter o formato 11 11111-1111.")
+    @Size(min = 16, max = 16, message = "O telefone deve ter o formato +11 11 11111-1111.")
     private String phoneNumber;
 
     @Email(message = "Informe o email")
     private String email;
 
     @CPF(message = "Informe o CPF")
+    @Size(min = 11, max = 11, message = "informe o cpf")
     private String cpf;
 
     @NotEmpty(message = "Informe uma senha")
     private String password;
 
     @NotNull
+    @NotBlank(message = "banco não pode ser vazio")
     private String branch;
 
     @NotNull
+    @NotBlank(message = "Número da conta não pode ser vazio")
     private String accountnumber;
 
     @NotEmpty
+    @NotBlank(message = "Tipo de conta não pode ser vazio")
     private String accounttype;
 
 

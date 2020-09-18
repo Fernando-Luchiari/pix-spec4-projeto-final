@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/customer")
@@ -38,6 +41,12 @@ public class CustomerController {
     @GetMapping(value = "/{id}")
     public CustomerResponse getCustomerById (@PathVariable Long id) {
         Customer customer = service.getCustomer(id);
+        return mapper.to(customer);
+    }
+
+    @GetMapping(value = "/cpf/{cpf}")
+    public CustomerResponse getCustomerByCpf (@PathVariable @NotBlank @Size(max = 11)String cpf) {
+        Customer customer = service.getCustomerByCpf(cpf);
         return mapper.to(customer);
     }
 

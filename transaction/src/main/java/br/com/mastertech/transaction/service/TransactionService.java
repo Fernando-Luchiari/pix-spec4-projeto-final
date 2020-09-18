@@ -1,7 +1,6 @@
 package br.com.mastertech.transaction.service;
 
 import br.com.mastertech.transaction.entity.Document;
-import br.com.mastertech.transaction.entity.InfoAdicionais;
 import br.com.mastertech.transaction.model.DocumentUpdateRequest;
 import br.com.mastertech.transaction.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +36,9 @@ public class TransactionService {
     @Transactional
     public void deleteDocument(String txid) {
         repository.deleteByTxid(txid);
+    }
+
+    public List<Document> getChave(String chave) {
+        return repository.findByChave(chave);
     }
 }

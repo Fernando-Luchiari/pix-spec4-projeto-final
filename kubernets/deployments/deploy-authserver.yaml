@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deployment-authserver
+    labels:
+        app: myapp-pix-grupo3-authserver
+spec:
+    template:
+        metadata:
+            name: authserver-pix-grupo3
+            labels:
+                app: myapp-pix-grupo3-authserver
+        spec:
+            containers:
+                - name: pix-grupo3-authserver-container
+                  image: registry-itau.mastertech.com.br/pix-grupo3-authserver
+            imagePullSecrets:
+                - name: regcred
+    replicas: 1
+    selector:
+        matchLabels:
+            app: myapp-pix-grupo3-authserver

@@ -1,25 +1,25 @@
 package br.com.mastertech.contact.model;
 
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Entity
 public class Contact
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message =  "Codigo do contato não  pode ser nulo")
-    @NotBlank(message = "Codigo do contato não pode ser vazio")
     private Long idCustomer;
 
-    @NotNull(message =  "Nome do contato não  pode ser nulo")
-    @NotBlank(message = "Nome do contato não pode ser vazio")
     private String nickName;
+
+    private String keyPix;
 
     public Long getId() {
 
@@ -51,6 +51,12 @@ public class Contact
         this.nickName = nickName;
     }
 
-    public Contact() {
+    public String getKeyPix() {
+        return keyPix;
     }
+
+    public void setKeyPix(String keyPix) {
+        this.keyPix = keyPix;
+    }
+
 }

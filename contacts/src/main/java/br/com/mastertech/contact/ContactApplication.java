@@ -3,8 +3,10 @@ package br.com.mastertech.contact;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class ContactApplication {
 
 	public static void main(String[] args) {

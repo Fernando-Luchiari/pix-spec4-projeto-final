@@ -1,6 +1,7 @@
 package br.com.mastertech.bond.service;
 
 import br.com.mastertech.bond.entity.Bond;
+import br.com.mastertech.bond.exceptions.BondExceptionJaExiste;
 import br.com.mastertech.bond.exceptions.BondNotFoundException;
 import br.com.mastertech.bond.model.BondRequest;
 import br.com.mastertech.bond.model.BondResponseGet;
@@ -26,10 +27,16 @@ public class BondService {
     private BondRepository bondRepository;
 
     public Bond createBond(Bond bond) {
+
+        if(alreadyExistsKeyPixeKeyType(bond).isPresent()){
+            throw new BondExceptionJaExiste();
+        }
+
         bond.setCreationDate(LocalDateTime.now());
         bond.setKeyOwnershipDate(LocalDateTime.now());
         //bond.setRequestId(stringHexa(gerarHash(bond.getOwner().getName(), "MD5")));
         return bondRepository.save(bond);
+
     }
 
     public Bond getBond(String key) {
@@ -41,6 +48,14 @@ public class BondService {
         } else {
             throw new BondNotFoundException();
         }
+    }
+
+    public boolean verifyBond(String key) {
+        Optional<Bond> bondOptional = bondRepository.findByKeyPix(key);
+        if(bondOptional.isPresent())
+            return true;
+        else
+            return false;
     }
 
     public static byte[] gerarHash(String frase, String algoritmo) {
@@ -64,9 +79,18 @@ public class BondService {
         return s.toString();
     }
 
-//    public void updateBond(Bond bond) {
-//    }
+    public Bond updateBond(Bond bond) {
+        Bond retornoBond = new Bond();
 
-//    public void deleteBond() {
-//    }
+        bondRepository.save(bond);
+        return retornoBond;
+    }
+
+    public void deleteBond(Bond bond) {
+        bondRepository.delete(bond);
+    }
+
+    private Optional<Bond> alreadyExistsKeyPixeKeyType(Bond bond){
+        return bondRepository.findByKeyPixAndKeyType(bond.getKeyPix(), bond.getKeyType());
+    }
 }

@@ -2,17 +2,17 @@ package br.com.mastertech.bond.controller;
 
 import br.com.mastertech.bond.entity.Bond;
 import br.com.mastertech.bond.mapper.BondMapper;
-import br.com.mastertech.bond.model.BondRequest;
-import br.com.mastertech.bond.model.BondResponseGet;
-import br.com.mastertech.bond.model.BondResponsePost;
+import br.com.mastertech.bond.model.*;
 import br.com.mastertech.bond.service.BondService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/entries")
 public class BondController {
 
@@ -35,21 +35,29 @@ public class BondController {
     public BondResponseGet getBond(@PathVariable String key) {
         Bond bond = bondService.getBond(key);
         return mapper.toGet(bond);
-
     }
 
-//    @PutMapping("/{key}")
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public BondResponse updateBond(@RequestBody @Valid Bond bond) {
-//        bondService.updateBond(bond);
-//
-//    }
+    @GetMapping("/verify/{key}")
+    public boolean verifyBond(@PathVariable String key){
+        return bondService.verifyBond(key);
+    }
 
-//    @DeleteMapping("/{key}/delete")
-//    @Transactional
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void deleteBond(@PathVariable String key){
-//        bondService.deleteBond();
-//
-//    }
+    @PutMapping("/{key}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public BondResponsePut updateBond(@RequestBody @Valid BondRequestPut bondRequestPut, @PathVariable String key) {
+
+        Bond bond = mapper.toBond(bondRequestPut);
+        bond = bondService.updateBond(bond);
+        return mapper.toBondResponsePut(bond);
+    }
+
+    @DeleteMapping("/{key}/delete")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public BondResponseDelete deleteBond(@RequestBody @Valid BondRequestDelete bondRequestDelete, @PathVariable String key){
+
+        bondService.deleteBond(mapper.toBond(bondRequestDelete));
+
+        return mapper.toBondResponseDelete(bondRequestDelete);
+    }
 }
