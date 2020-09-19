@@ -15,8 +15,15 @@ public class TransactionService {
     @Autowired
     private TransactionRepository repository;
 
+    @Autowired
+    private DocumentProducer producer;
+
     public Document create(Document data) {
-        return repository.save(data);
+        Document doc = repository.save(data);
+        if(doc != null){
+            producer.enviarAoKafka(doc);
+        }
+        return doc;
     }
 
     public List<Document> getListDocument(String cpf) {
