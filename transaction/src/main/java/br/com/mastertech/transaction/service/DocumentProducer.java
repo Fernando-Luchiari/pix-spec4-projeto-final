@@ -15,7 +15,7 @@ public class DocumentProducer {
 
     public void enviarAoKafka(Document dados) {
 
-        producer.send("spec4-gp3-pix", dados);
+        producer.send("spec4-gp3-pix", "transaction notify", dados);
 
     }
 
