@@ -1,5 +1,9 @@
 package br.com.mastertech.transaction.entity;
 
+import br.com.mastertech.notification.deserialize.LocalDateDeserializer;
+import br.com.mastertech.notification.deserialize.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,7 +11,7 @@ import java.util.List;
 
 public class Document {
     private long id;
-
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate datavencimento;
     private Boolean recebivelAposvencimento;
     private String cpfPagador;
@@ -20,6 +24,7 @@ public class Document {
     private String revisao;
     private String payloadURL;
     private String txid;
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dataCriacao;
 
     public long getId() {
