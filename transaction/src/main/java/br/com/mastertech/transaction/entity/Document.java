@@ -1,5 +1,9 @@
 package br.com.mastertech.transaction.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,7 +15,7 @@ public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate datavencimento;
     private Boolean recebivelAposvencimento;
     private String cpfPagador;
@@ -26,6 +30,7 @@ public class Document {
     private String revisao;
     private String payloadURL;
     private String txid;
+
     private LocalDateTime dataCriacao;
 
     public long getId() {

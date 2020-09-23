@@ -21,6 +21,11 @@ public class TransactionService {
     public Document create(Document data) {
         Document doc = repository.save(data);
         if(doc != null){
+            Document docKafka = new Document();
+            docKafka.setCpfPagador(doc.getCpfPagador());
+            docKafka.setValor(doc.getValor());
+            docKafka.setTxid(doc.getTxid());
+            docKafka.setSolicitacaoPagador(doc.getSolicitacaoPagador());
             producer.enviarAoKafka(doc);
         }
         return doc;
