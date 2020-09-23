@@ -25,6 +25,7 @@ public class TransactionService {
             docKafka.setCpfPagador(doc.getCpfPagador());
             docKafka.setValor(doc.getValor());
             docKafka.setTxid(doc.getTxid());
+            docKafka.setSolicitacaoPagador(doc.getSolicitacaoPagador());
             producer.enviarAoKafka(doc);
         }
         return doc;
