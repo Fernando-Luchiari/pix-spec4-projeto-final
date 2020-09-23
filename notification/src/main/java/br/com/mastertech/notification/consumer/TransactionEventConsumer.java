@@ -27,7 +27,7 @@ public class TransactionEventConsumer {
     @KafkaListener(topics = "spec4-gp3-pix", groupId = "transaction notify")
     public void receber(@Payload Document documentEvent) throws IOException{
         Customer customer = getCustomerData(documentEvent.getCpfPagador());
-        String mensagem = montaMensagemCurta(documentEvent);
+        String mensagem = montaMensagemCurta(documentEvent,customer);
 //        pixBot(transactionEvent.toString() + customer.getPhoneNumber());
         smsService.sendSMS(customer, mensagem);
         mailService.sendMail(mensagem, customer);
@@ -43,12 +43,12 @@ public class TransactionEventConsumer {
         return customerClient.getCustomerByCpf(cpf);
     }
 
-    public String montaMensagemCurta(Document documentEvent){
+    public String montaMensagemCurta(Document documentEvent,Customer customer){
 
         StringBuilder mensagem = new StringBuilder();
 
         mensagem.append("Informe PIX: \n");
-        mensagem.append(documentEvent.getNomePagador());
+        mensagem.append(customer.getName());
         mensagem.append(" realizou um pagamento de R$");
         mensagem.append(documentEvent.getValor());
         mensagem.append(" por ");
