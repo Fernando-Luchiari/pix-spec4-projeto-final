@@ -5,7 +5,6 @@ import br.com.mastertech.transaction.entity.InfoAdicionais;
 import br.com.mastertech.transaction.entity.Pagador;
 import br.com.mastertech.transaction.entity.Valor;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.List;
 
