@@ -24,13 +24,13 @@ public class Document {
     private String chave;
     private String solicitacaoPagador;
     private String idUnicoDocumento;
-    @OneToMany(cascade=CascadeType.ALL)
+
     @JoinColumn(name="idDocument")
     private List<InfoAdicionais> infoAdicionais;
     private String revisao;
     private String payloadURL;
     private String txid;
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
+
     private LocalDateTime dataCriacao;
 
     public long getId() {
