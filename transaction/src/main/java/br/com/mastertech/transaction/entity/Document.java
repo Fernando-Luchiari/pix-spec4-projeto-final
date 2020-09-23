@@ -2,6 +2,7 @@ package br.com.mastertech.transaction.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,7 +24,7 @@ public class Document {
     private String chave;
     private String solicitacaoPagador;
     private String idUnicoDocumento;
-
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="idDocument")
     private List<InfoAdicionais> infoAdicionais;
     private String revisao;
