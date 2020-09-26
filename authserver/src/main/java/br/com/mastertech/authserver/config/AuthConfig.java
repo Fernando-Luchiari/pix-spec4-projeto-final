@@ -33,7 +33,7 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter{
      .and()
      .withClient("apiprojPixSpec4")
       .secret(encoder.encode("apipix"))
-      .authorizedGrantTypes("check_token", "password", "refresh_token")
+    .authorizedGrantTypes("check_token", "client_credentials", "refresh_token")
       .scopes("all");
   }
   
