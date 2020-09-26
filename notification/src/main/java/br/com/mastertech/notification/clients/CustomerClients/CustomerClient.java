@@ -11,5 +11,5 @@ public interface CustomerClient {
     Customer getCustomerById(@PathVariable Long id);
 
     @GetMapping("/cpf/{cpf}")
-    Customer getCustomerByCpf(@PathVariable String id);
+    Customer getCustomerByCpf(@PathVariable String cpf);
 }
