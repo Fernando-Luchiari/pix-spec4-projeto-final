@@ -45,7 +45,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/cpf/{cpf}")
-    public CustomerResponse getCustomerByCpf (@PathVariable @NotBlank @Size(max = 11)String cpf) {
+    public CustomerResponse getCustomerByCpf (@PathVariable String cpf) {
         Customer customer = service.getCustomerByCpf(cpf);
         return mapper.to(customer);
     }
