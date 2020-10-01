@@ -51,10 +51,6 @@ public class BondService {
         }
     }
 
-    public List<Bond> getListBond(String cpf) {
-        return bondRepository.findByOwnerTaxIdNumber(cpf);
-    }
-
     public boolean verifyBond(String key) {
         Optional<Bond> bondOptional = bondRepository.findByKeyPix(key);
         if(bondOptional.isPresent())

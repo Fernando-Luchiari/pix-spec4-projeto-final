@@ -43,11 +43,6 @@ public class BondController {
         return bondService.verifyBond(key);
     }
 
-    @GetMapping("/{cpf}")
-    public List<Bond> getListBond(@PathVariable String cpf){
-        return bondService.getListBond(cpf);
-    }
-
     @PutMapping("/{key}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public BondResponsePut updateBond(@RequestBody @Valid BondRequestPut bondRequestPut, @PathVariable String key) {

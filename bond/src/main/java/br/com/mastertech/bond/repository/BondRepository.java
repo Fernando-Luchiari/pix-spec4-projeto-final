@@ -11,5 +11,4 @@ public interface BondRepository extends CrudRepository<Bond, Integer> {
 
     Optional<Bond> findByKeyPixAndKeyType(String keyPix, String keyType);
 
-    List<Bond> findByOwnerTaxIdNumber(String cpf);
 }
