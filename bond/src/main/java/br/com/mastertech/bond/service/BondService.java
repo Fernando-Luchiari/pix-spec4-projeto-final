@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,6 +49,10 @@ public class BondService {
         } else {
             throw new BondNotFoundException();
         }
+    }
+
+    public List<Bond> getListBond(String cpf) {
+        return bondRepository.findByOwnerTaxIdNumber(cpf);
     }
 
     public boolean verifyBond(String key) {

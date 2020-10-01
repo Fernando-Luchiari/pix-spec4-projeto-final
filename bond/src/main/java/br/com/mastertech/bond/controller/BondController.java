@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -40,6 +41,11 @@ public class BondController {
     @GetMapping("/verify/{key}")
     public boolean verifyBond(@PathVariable String key){
         return bondService.verifyBond(key);
+    }
+
+    @GetMapping("/{cpf}")
+    public List<Bond> getListBond(@PathVariable String cpf){
+        return bondService.getListBond(cpf);
     }
 
     @PutMapping("/{key}")
